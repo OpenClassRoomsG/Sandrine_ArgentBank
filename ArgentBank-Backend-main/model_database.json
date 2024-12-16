@@ -1,0 +1,82 @@
+[
+    {
+        "_id": "user1",
+        "profile": {
+            "firstName": "Tony",
+            "lastName": "Stark",
+            "email": "tony@stark.com",
+            "password": "password123",
+            "userName": "Iron"
+        },
+        "accounts": [
+            {
+                "_id": "account1_user1",
+                "title": "Argent Bank Checking (x8349)",
+                "amount": 48098.43,
+                "description": "Available Balance",
+                "transactions": [
+                    {
+                        "_id": "transaction1_account1_user1",
+                        "date": "2020-02-27",
+                        "description": "Golden Sun Bakery",
+                        "amount": 8,
+                        "balance": 48090,
+                        "transaction_type": "Electronic",
+                        "category": "Food",
+                        "note": "Iorem ipsum"
+                    },
+                    {
+                        "_id": "transaction2_account1_user1",
+                        "date": "2020-02-29",
+                        "description": "Golden Sun Bakery",
+                        "amount": 2000,
+                        "balance": 46090,
+                        "transaction_type": "Deposit",
+                        "category": "Hobby",
+                        "note": "Iorem ipsum"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "_id": "user2",
+        "profile": {
+            "firstName": "Steve",
+            "lastName": "Rogers",
+            "email": "steve@rogers.com",
+            "password": "password456",
+            "userName": "Cap"
+        },
+        "accounts": [
+            {
+                "_id": "account1_user2",
+                "title": "Argent Bank Savings (x8349)",
+                "amount": 8098.99,
+                "description": "Available Balance",
+                "transactions": [
+                    {
+                        "_id": "transaction1_account1_user2",
+                        "date": "2020-02-27",
+                        "description": "Carrefour",
+                        "amount": 8,
+                        "balance": 8090,
+                        "transaction_type": "Electronic",
+                        "category": "Food",
+                        "note": "Iorem ipsum"
+                    },
+                    {
+                        "_id": "transaction2_account1_user2",
+                        "date": "2020-02-29",
+                        "description": "Planet Fitness",
+                        "amount": 50,
+                        "balance": 8040,
+                        "transaction_type": "Deposit",
+                        "category": "Hobby",
+                        "note": "Iorem ipsum"
+                    }
+                ]
+            }
+        ]
+    }
+]

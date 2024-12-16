@@ -1,0 +1,87 @@
+  
+  /******** Message de Bienvenue ******/
+  
+  .edit-button {
+    border-color: #00bc77;
+    background-color: #00bc77;
+    color: #fff;
+    padding: 10px;
+    font-size: 20px;
+  }
+      .headerUser {
+    color: white;
+    margin-bottom: 2rem;
+    padding-top: 1px;
+  }
+  
+
+  
+ /******** FORMULAIRE pour modif UserName ******/
+
+ 
+  .edit-form {
+  padding: 20px;
+  max-width: 360px;
+  margin: auto;
+  
+}
+
+.edit-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+  font-size: 30px;
+}
+
+.input-group {
+  display: flex; /* Alignement horizontal des labels et inputs */
+  align-items: center; /* Alignement vertical centré */
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.input-group input {
+  width: 45%;
+  padding: 5px;
+  margin-left: 15px;
+  border: 1.5px solid #3e3d3d3b;
+  border-radius: 4px;
+  font-size: 16px;
+ 
+}
+
+.input-group input:disabled {
+  background-color: #999;
+  color: #222;
+  cursor: not-allowed;
+}
+
+.button-group {
+  display: flex;
+  margin-top: 40px;
+  gap:26px;
+}
+
+.save-button,
+.cancel-button {
+  padding: 10px 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #00bc77;
+  color: #fff;
+  
+}
+
+
+
+
+  
+  

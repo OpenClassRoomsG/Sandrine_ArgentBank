@@ -1,0 +1,30 @@
+.features {
+  display: flex; 
+}
+
+.feature-item {
+  flex: 1;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.feature-icon {
+  width: 100px;
+  height: 100px;
+  border: 10px solid #00bc77;
+  border-radius: 50%;
+  padding: 1rem;
+}
+
+.feature-item-title {
+  color: #222;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem; 
+}
+
+.feature-item p {
+    line-height: 1;
+    font-size: 17px;
+}
+

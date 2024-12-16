@@ -1,0 +1,323 @@
+swagger: '2.0'
+info:
+  title: Bank Argent API documentation
+  description: Contains all available API endpoints in this codebase
+  version: '1.0.0'
+  termsOfService: 'http://swagger.io/terms/'
+host: localhost:3001
+basePath: /api/v1
+schemes:
+  - http
+paths:
+  /user/login:
+    post:
+      tags:
+        - User Module
+      summary: Login
+      description: API for Login
+      parameters:
+        - in: body
+          name: body
+          description: Login Payload
+          required: true
+          schema:
+            $ref: '#/definitions/Login'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Login Successfully
+          schema:
+            $ref: '#/definitions/LoginResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/signup:
+    post:
+      tags:
+        - User Module
+      summary: Signup
+      description: API for Signup
+      parameters:
+        - in: body
+          name: body
+          description: Signup Payload
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Signup Successfully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/profile:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: User Profile API
+      description: API for fetching a user profile
+      #produces:
+       # - application/json
+      responses:
+        '200':
+          description: User profile retrieved successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: User Profile API
+      description: API for updating a user profile
+      parameters:
+        - in: body
+          name: body
+          description: Update user profile attributes
+          required: true
+          schema:
+            $ref: '#/definitions/UserProfile'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User profile retrieved successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+          
+  /user/transactions/{accountId}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        -  Transactions Module
+      summary: User Accounts API
+      description: Get all transactions by accouts
+      parameters:
+        -  in: path
+           name: accountId
+           description: User account id
+           required: true
+           type: string
+      responses:
+        '200':
+          description: All transations retireved successfully
+          schema:
+            $ref: "#/definitions/Transactions"
+        '401':
+          description: Not allowed
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '500':
+          description: Internal error
+  /account/transaction/{transactionId}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        -  Transactions Module
+      summary: Account Transaction API
+      description: Get all transactions by accounts
+      parameters:
+        -  in: path
+           name: transactionId
+           description: transaction id
+           required: true
+           type: string
+      responses:
+        '200':
+          description: Transaction returned
+          schema:
+            $ref: "#/definitions/Transaction"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Error
+  /transaction/{transactionId}/Category-Note:
+    patch:
+      security:
+        - Bearer: []
+      tags:
+        -  Transactions Module
+      summary: Update Category/Note API
+      description: Get all transactions by accounts
+      parameters:
+        -  in: path
+           name: transactionId
+           description: transaction id
+           required: true
+           type: string
+        -  in: body
+           name: body
+           description: category and/or note
+           required: true
+           schema:
+            $ref: '#/definitions/TransactionBody'
+      responses:
+        '200':
+          description: Transaction returned
+          schema:
+            $ref: "#/definitions/Transaction"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Error
+  /transaction/{transactionId}/Note:
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        -  Transactions Module
+      summary: Delete Note API
+      description: Get all transactions by accounts
+      parameters:
+        -  in: path
+           name: transactionId
+           description: transaction id
+           required: true
+           type: string
+        -  in: body
+           name: body
+           description: category and/or note
+           required: true
+           schema:
+            $ref: '#/definitions/DeleteNote'
+      responses:
+        '200':
+          description: Transaction returned
+          schema:
+            $ref: "#/definitions/DeleteNote"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Error
+           
+    
+      
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+
+  TransactionBody:
+    properties:
+      note:
+        type: string
+      category:
+        type: string
+  DeleteNote:
+    properties:
+      note:
+        type: string
+      
+        
+  Transaction:
+    properties:
+      id:
+        type: string
+      amount:
+        type: string
+      userId:
+        type: string
+      accountId:
+        type: string
+      date:
+        type: string
+      note:
+        type: string
+      category:
+        type: string
+      description:
+        type: string
+    
+  Transactions:
+    items:
+      $ref: '#/definitions/Transaction'
+    
+    
+  User:
+    properties:
+      email:
+        type: string
+        description: user email
+      password:
+        type: string
+        description: user password
+      firstName:
+        type: string
+        description: user first name
+      lastName:
+        type: string
+        description: user last name
+      userName:
+        type: string
+        description: user public name
+  Login:
+    properties:
+      email:
+        type: string
+        description: user email
+      password:
+        type: string
+        description: user password
+  ApiResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        type: object
+        properties:
+          id:
+            type: string
+          email:
+            type: string
+  LoginResponse:
+    type: object
+    properties:
+      token:
+        type: string
+  UserProfile:
+    type: object
+    properties:
+      userName:
+        type: string
